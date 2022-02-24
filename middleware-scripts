@@ -1,0 +1,31 @@
+            #!/bin/bash
+       #DESCRIPTION :INSTALLATION OF SONARQUBE
+       #AUTHOR : ADE
+       #DATE:FEBRUARY 23RD, 2022
+echo 
+echo "WELCOME TO THE INSTALLATION OF SONARQUBE"
+sleep 3
+echo
+sudo yum update -y
+yum install java-11-openjdk-devel -y
+sudo yum install java-11-openjdk -y
+echo
+cd /opt 
+sudo yum install wget -y
+echo
+sleep 2
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.3.0.51899.zip
+echo
+sudo yum install zip -y
+sleep 2
+sudo unzip /opt/sonarqube-9.3.0.51899.zip
+echo
+echo "PLEASE BE PATIENT WITH ME"
+sleep 2
+sudo chown -R vagrant:vagrant /opt/sonarqube-9.3.0.51899
+cd /opt/sonarqube-9.3.0.51899/bin/linux-x86-64
+./sonar.sh start
+sudo firewall-cmd --permanent --add-port=9000/tcp
+echo
+echo "TO GOD BE THE GLORY"
+echo "I MADE IT"
